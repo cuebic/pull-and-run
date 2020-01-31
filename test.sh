@@ -1,8 +1,9 @@
 yes | apt-get update
 yes | apt-get install openssh-client git
 
-REPO_URI=$1
-REPO_NAME=$(echo $REPO_URI | rev | cut -d "/" -f 1 | rev | cut -d "." -f 1)
+REPO_NAME=$1
+REPO_URI=git@github.com:cuebic/$REPO_NAME.git
+
 if [ ! -d ~/.ssh ]; then
    mkdir -p ~/.ssh
 fi;
@@ -14,4 +15,11 @@ ssh-add
 mkdir pull-and-run-tmp
 cd pull-and-run-tmp
 ssh-keyscan github.com >> ~/.ssh/known_hosts
-git clone $REPO_URI $REPO_NAME
+
+curl -s https://raw.githubusercontent.com/greg-chuchro/pull-and-run/master/test2.sh | bash -s $REPO_NAME
+
+cd $REPO_NAME
+cd app
+
+dotnet build -c Release
+dotnet run -c Release
