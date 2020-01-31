@@ -13,4 +13,5 @@ ssh-add
 
 mkdir pull-and-run-tmp
 cd pull-and-run-tmp
-yes | git clone $REPO_URI $REPO_NAME
+ssh-keyscan github.com >> ~/.ssh/known_hosts
+git clone $REPO_URI $REPO_NAME
