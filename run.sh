@@ -16,7 +16,7 @@ mkdir pull-and-run-tmp
 cd pull-and-run-tmp
 ssh-keyscan github.com >> ~/.ssh/known_hosts
 
-curl -s https://raw.githubusercontent.com/greg-chuchro/pull-and-run/master/test2.sh | bash -s $REPO_NAME
+curl -s https://raw.githubusercontent.com/cuebic/pull-and-run/master/pull.sh | bash -s $REPO_NAME
 
 cd $REPO_NAME
 cd app
